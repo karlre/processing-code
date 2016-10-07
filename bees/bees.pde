@@ -1,7 +1,3 @@
-//import gifAnimation.*;
-//GifMaker gifExport;
-
-
 PVector[] boxes;
 int box_width = 34;
 int box_height = 10;

@@ -1,38 +1,46 @@
+//import gifAnimation.*;
+//GifMaker gifExport;
+
+
 PVector[] boxes;
-int box_width = 100;
-int box_height = 15;
-int r;
+int box_width = 34;
+int box_height = 10;
 
 void setup() {
   size(800, 600);
-  stroke(51);
-  fill(51);
-  int total_points = 20;
+  fill(255, 0, 150, 100);
+  //stroke(51);
+  noStroke();
+  int total_points = 100;
   float theta = TWO_PI / total_points;
-  r = 50;
+  int r = 71;
   boxes = new PVector[total_points];
   for (int i =0; i < total_points; i++) {
     float angle = theta * i;
-    float x = r * cos(angle) + width/2;
-    float y = r * sin(angle) + height/2;
+    float x = r * cos(angle);
+    float y = r * sin(angle);
     boxes[i] = new PVector(x, y);
   }
 }
 
-
 void draw() {
   background(255, 250, 245);
-  int r2 = 60;
-  float x = r2 * cos(frameCount * 0.02) + width/2;
-  float y = r2 * sin(frameCount * 0.02) + height/2;
-  for (int i = 0; i < boxes.length; i++) {
-    pushMatrix();
-    translate(boxes[i].x, boxes[i].y);
-    float angle = atan2(boxes[i].y - y, boxes[i].x - x);
-    //rotate(angle*(i+1)*0.05+PI);
-    rotate(angle);
-    line(box_width, -box_height/2, 0, 0);
-    ellipse(box_width, -box_height/2, 20, 20);
-    popMatrix();
+  for (int y = -1; y < 11; y++) {
+    for (int x = -1; x < 11; x++) {
+      beginShape();
+      for (int i = 0; i < boxes.length; i++) {
+        pushMatrix();
+        float bx = boxes[i].x + x * 100;
+        float by = boxes[i].y + y * 100;
+        translate(bx, by);
+        float angle = atan2(by - height/2, bx - width/2);
+        rotate(angle+frameCount*0.1);
+        float sx = screenX(box_width, box_height);
+        float sy = screenY(box_width, box_height);
+        vertex(sx, sy);
+        popMatrix();
+      }
+      endShape(CLOSE);
+    }
   }
 }

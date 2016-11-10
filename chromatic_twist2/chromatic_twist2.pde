@@ -21,7 +21,7 @@ void draw() {
 
     pushMatrix();
     translate(width/2, height/2);
-    float rot = map(trot, 0, 1, 0, (i+1)*TWO_PI);
+    float rot = map(trot, 0, 1, 0, (i+1)*PI);
     rotate(rot);
     fill(fg[i]);
     arc(0, 0, width - (width/12 + i * width/7.5), height - (height/12 + i * height/7.5), 5*PI/4, 7*PI/4);
@@ -32,7 +32,7 @@ void draw() {
 
   pushMatrix();
   translate(width/2, height/2);
-  float rot = map(trot, 0, 1, 0, 6*TWO_PI);
+  float rot = map(trot, 0, 1, 0, 6*PI);
   rotate(rot);
 
   fill(45, 50, 125);
@@ -63,7 +63,7 @@ void draw() {
   popMatrix();
   //saveFrame("f###.gif");
   if (trot >= 1) {
-    //   exit();
+       exit();
   }
 }
 

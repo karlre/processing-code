@@ -3,9 +3,9 @@ color[] fg = {color(45, 55, 140), color(58, 80, 185), color(65, 110, 145), color
 
 
 void setup() {
-  size(600, 600);
+  size(600, 600, P2D);
   noStroke();
-  smooth();
+  smooth(8);
 }
 
 float start = 0;
